@@ -1,4 +1,4 @@
-const URL = "https://638c6687eafd555746a597ec.mockapi.io/api";
+const URL = "https://638c6687eafd555746a597ec.mockapi.io/api/";
 
 class ProducesServices {
 
