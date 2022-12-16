@@ -1,8 +1,8 @@
 import ProducesServices from "../services/ProduceServices.js";
 import Produce from "../models/Produce.js";
 import Validation from "../models/validation.js";
-const validation = new Validation();
 const produceService = new ProducesServices();
+const validation = new Validation();
 const getEl = id => document.getElementById(id);
 
 const getListProduces = () => {
