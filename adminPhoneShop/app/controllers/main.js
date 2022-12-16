@@ -1,7 +1,7 @@
 import ProducesServices from "../services/ProduceServices.js";
 import Produce from "../models/Produce.js";
 import Validation from "../models/validation.js";
-const validation = new Validation();
+// const validation = new Validation();
 const produceService = new ProducesServices();
 const getEl = id => document.getElementById(id);
 
@@ -47,20 +47,20 @@ const getValueIput = async () => {
     const imgProduce = getEl("imgProduce").value;
     const descProduce = getEl("descProduce").value;
 
-    let isValid = true;
+    // let isValid = true;
 
-    isValid &= validation.checkNull(NameProduce, "tbNameSP", "(*)Vui lòng nhập thông tin");
-    isValid &= validation.checkOtion("typeProduce", "tbLoaiSP", "(*)Vui lòng chọn sản phẩm");
-    isValid &= validation.checkNull(backCameraProduce, "tbBackCamera", "(*)Vui lòng nhập thông tin");
-    isValid &= validation.checkNull(frontCameraProduce, "tbfrontCamera", "(*)Vui lòng nhập thông tin");
-    isValid &= validation.checkNull(screenProduce, "tbScreen", "(*)Vui lòng nhập thông tin");
-    isValid &= validation.checkNull(PriceProduce, "tbPrice", "(*)Vui lòng nhập thông tin");
-    isValid &= validation.checkNull(imgProduce, "tbImg", "(*)Vui lòng nhập thông tin");
-    isValid &= validation.checkNull(descProduce, "tbDesc", "(*)Vui lòng nhập thông tin");
+    // isValid &= validation.checkNull(NameProduce, "tbNameSP", "(*)Vui lòng nhập thông tin");
+    // isValid &= validation.checkOtion("typeProduce", "tbLoaiSP", "(*)Vui lòng chọn sản phẩm");
+    // isValid &= validation.checkNull(backCameraProduce, "tbBackCamera", "(*)Vui lòng nhập thông tin");
+    // isValid &= validation.checkNull(frontCameraProduce, "tbfrontCamera", "(*)Vui lòng nhập thông tin");
+    // isValid &= validation.checkNull(screenProduce, "tbScreen", "(*)Vui lòng nhập thông tin");
+    // isValid &= validation.checkNull(PriceProduce, "tbPrice", "(*)Vui lòng nhập thông tin");
+    // isValid &= validation.checkNull(imgProduce, "tbImg", "(*)Vui lòng nhập thông tin");
+    // isValid &= validation.checkNull(descProduce, "tbDesc", "(*)Vui lòng nhập thông tin");
 
-    if (!isValid) {
-        return null;
-    }
+    // if (!isValid) {
+    //     return null;
+    // }
 
     const prouduce = new Produce(
         idProduce,
@@ -96,7 +96,7 @@ getEl("btnThemMon").onclick = async () => {
     }
 }
 
-const btnEdit = id => {
+const btnEdit = async id => {
     document.getElementsByClassName("modal-title")[0].innerHTML = "Sửa sản phẩm"
     getEl("btnCapNhat").style.display = "block";
     getEl("btnThemMon").style.display = "none";
@@ -126,8 +126,8 @@ const btnDelete = id => {
         .catch(err => console.log(err))
 }
 
-getEl("btnCapNhat").addEventListener("click", async () => {
-    const produce = await getValueIput();
+getEl("btnCapNhat").addEventListener("click", () => {
+    const produce = getValueIput();
     if (produce) {
         produceService
             .callAPI(`ProductCapstone/${produce.id}`, "PUT", produce)
