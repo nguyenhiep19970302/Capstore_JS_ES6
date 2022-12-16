@@ -36,7 +36,7 @@ const renderHTML = dataList => {
     }, "");
     getEl("tblDanhSachSanPham").innerHTML = result;
 }
-const getValueIput = () => {
+const getValueIput = async () => {
     const idProduce = getEl("idProduce").value;
     const NameProduce = getEl("NameProduce").value;
     const typeProduce = getEl("typeProduce").value;
@@ -83,8 +83,8 @@ getEl("btnThemSanPham").addEventListener("click", () => {
     getEl("formProduce").reset();
 })
 
-getEl("btnThemMon").onclick = () => {
-    const produce = getValueIput();
+getEl("btnThemMon").onclick = async () => {
+    const produce = await getValueIput();
     if (produce) {
         produceService
             .callAPI(`ProductCapstone`, "POST", produce)
@@ -126,8 +126,8 @@ const btnDelete = id => {
         .catch(err => console.log(err))
 }
 
-getEl("btnCapNhat").addEventListener("click", () => {
-    const produce = getValueIput();
+getEl("btnCapNhat").addEventListener("click", async () => {
+    const produce = await getValueIput();
     if (produce) {
         produceService
             .callAPI(`ProductCapstone/${produce.id}`, "PUT", produce)
