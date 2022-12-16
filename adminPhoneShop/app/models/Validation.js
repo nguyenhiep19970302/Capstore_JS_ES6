@@ -1,28 +1,26 @@
-const getELe = id => document.getElementById(id);
-class Validation{
+const getEle = (id) => document.getElementById(id);
+class Validation {
+    checkOtion = (idSel, errId, mess) => {
+        if (getEle(idSel).selectedIndex !== 0) {
+            getEle(errId).innerHTML = "";
+            getEle(errId).style.display = "none";
+            return true;
+        }
+        getEle(errId).innerHTML = mess;
+        getEle(errId).style.display = "block";
+        return false;
+    }
 
-    valicationCheck(val,errId,mess) {
+    checkNull = (val, errId, mess) => {
         if (val === "") {
-            getELe(errId).style.display = "block";
-            getELe(errId).innerHTML = mess;
+            getEle(errId).innerHTML = mess;
+            getEle(errId).style.display = "block";
             return false;
         }
-        getELe(errId).style.display = "none";
-        getELe(errId).innerHTML = "";
+        getEle(errId).innerHTML = "";
+        getEle(errId).style.display = "none";
         return true;
     }
-
-    selectionCheck = function (selId, errId, mess) {
-        if (getELe(selId).selectedIndex !== 0) {
-        //true
-            getELe(errId).style.display = "none";
-            getELe(errId).innerHTML = "";
-        return true;
-    }
-    //false
-        getELe(errId).style.display = "block";
-        getELe(errId).innerHTML = mess;
-    return false;
-};
 }
+
 export default Validation;

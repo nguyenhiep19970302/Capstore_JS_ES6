@@ -123,56 +123,58 @@
           </div>
           <!-- Modal body -->
           <div class="modal-body">
-            <div class="form-group">
-              <label>Id</label>
-              <input disabled id="idProduce" class="form-control" placeholder="Nhập vào Id" />
-              <span class="sp-thongbao" id=""></span>
-            </div>
-            <div class="form-group">
-              <label>Tên sản phẩm</label>
-              <input id="NameProduce" class="form-control" placeholder="Nhập vào tên sản phẩm" />
-              <span class="sp-thongbao" id="tbNameSP"></span>
-            </div>
-            <div class="form-group">
-              <label for="">Loại sản phẩm: </label>
-              <select class="form-control" id="typeProduce">
-                <option>Chọn loại sản phẩm</option>
-                <option value="iphone">iphone</option>
-                <option value="Samsung">Samsung</option>
-              </select>
-              <span class="sp-thongbao" id="tbLoaiSP"></span>
-            </div>
-            <div class="form-group">
-              <label>Camera sau</label>
-              <input id="backCameraProduce" class="form-control" placeholder="Nhập vào kiểu camera sau" />
-              <span class="sp-thongbao" id="tbBackCamera"></span>
-            </div>
-            <div class="form-group">
-              <label>Camera trước</label>
-              <input id="frontCameraProduce" class="form-control" placeholder="Nhập vào kiểu camera trước" />
-              <span class="sp-thongbao" id="tbfrontCamera"></span>
-            </div>
-            <div class="form-group">
-              <label>Độ phẩn giải màn hình</label>
-              <input id="screenProduce" class="form-control" placeholder="Nhập vào Độ phân giải màn hình" />
-              <span class="sp-thongbao" id="tbScreen"></span>
-            </div>
-            <div class="form-group">
-              <label>Giá sản phẩm</label>
-              <input id="PriceProduce" class="form-control" placeholder="Nhập vào giá sản phảm" />
-              <span class="sp-thongbao" id="tbPrice"></span>
-            </div>
-            <div class="form-group">
-              <label>Link hình ảnh</label>
-              <input id="imgProduce" class="form-control" placeholder="URl hình ảnh" />
-              <span class="sp-thongbao" id="tbImg"></span>
-            </div>
+            <form id="formProduce">
+              <div class="form-group">
+                <label>Id</label>
+                <input disabled id="idProduce" class="form-control" placeholder="Nhập vào Id" />
+                <span class="sp-thongbao" id=""></span>
+              </div>
+              <div class="form-group">
+                <label>Tên sản phẩm</label>
+                <input type="text" id="NameProduce" class="form-control" placeholder="Nhập vào tên sản phẩm" required />
+                <span class="sp-thongbao" id="tbNameSP"></span>
+                </div>
+                <div class="form-group">
+                  <label for="">Loại sản phẩm: </label>
+                  <select class="form-control" id="typeProduce">
+                    <option>Chọn loại sản phẩm</option>
+                    <option value="iphone">iphone</option>
+                    <option value="Samsung">Samsung</option>
+                  </select>
+                  <span class="sp-thongbao" id="tbLoaiSP"></span>
+                </div>
+                <div class="form-group">
+                  <label>Camera sau</label>
+                  <input id="backCameraProduce" class="form-control" placeholder="Nhập vào kiểu camera sau" />
+                  <span class="sp-thongbao" id="tbBackCamera"></span>
+                </div>
+                <div class="form-group">
+                  <label>Camera trước</label>
+                  <input id="frontCameraProduce" class="form-control" placeholder="Nhập vào kiểu camera trước" />
+                  <span class="sp-thongbao" id="tbfrontCamera"></span>
+                </div>
+                <div class="form-group">
+                  <label>Độ phẩn giải màn hình</label>
+                  <input id="screenProduce" class="form-control" placeholder="Nhập vào Độ phân giải màn hình" />
+                  <span class="sp-thongbao" id="tbScreen"></span>
+                </div>
+                <div class="form-group">
+                  <label>Giá sản phẩm</label>
+                  <input id="PriceProduce" class="form-control" placeholder="Nhập vào giá sản phảm" />
+                  <span class="sp-thongbao" id="tbPrice"></span>
+                </div>
+                <div class="form-group">
+                  <label>Link hình ảnh</label>
+                  <input id="imgProduce" class="form-control" placeholder="URl hình ảnh" />
+                  <span class="sp-thongbao" id="tbImg"></span>
+                </div>
 
-            <div class="form-group">
-              <label>Mô tả</label>
-              <textarea id="descProduce" class="form-control" placeholder="Nhập vào mô tả"></textarea>
-              <span class="sp-thongbao" id="tbDesc"></span>
-            </div>
+              <div class="form-group">
+                <label>Mô tả</label>
+                <textarea id="descProduce" class="form-control" placeholder="Nhập vào mô tả"></textarea>
+                <span class="sp-thongbao" id="tbDesc"></span>
+              </div>
+            </form>
           </div>
           <!-- Modal footer -->
           <div class="modal-footer">

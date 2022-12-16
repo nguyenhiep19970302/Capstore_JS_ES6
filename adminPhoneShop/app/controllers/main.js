@@ -1,9 +1,8 @@
 import ProducesServices from "../services/ProduceServices.js";
 import Produce from "../models/Produce.js";
 import Validation from "../models/validation.js";
-
-const produceService = new ProducesServices();
 const validation = new Validation();
+const produceService = new ProducesServices();
 const getEl = id => document.getElementById(id);
 
 const getListProduces = () => {
@@ -37,7 +36,7 @@ const renderHTML = dataList => {
     }, "");
     getEl("tblDanhSachSanPham").innerHTML = result;
 }
-const getValueIput = (isAdd) => {
+const getValueIput = () => {
     const idProduce = getEl("idProduce").value;
     const NameProduce = getEl("NameProduce").value;
     const typeProduce = getEl("typeProduce").value;
@@ -48,20 +47,21 @@ const getValueIput = (isAdd) => {
     const imgProduce = getEl("imgProduce").value;
     const descProduce = getEl("descProduce").value;
 
-    let isFlag = true;
-    if (isAdd) {
-        isFlag &= validation.valicationCheck(NameProduce, "tbNameSP", "(*)Vui lòng nhập thông tin")
-        isFlag &= validation.selectionCheck("typeProduce","tbLoaiSP","(*)Vui lòng chọn sản phẩm")
-        isFlag &= validation.valicationCheck(backCameraProduce, "tbBackCamera", "(*)Vui lòng nhập thông tin")
-        isFlag &= validation.valicationCheck(frontCameraProduce, "tbfrontCamera", "(*)Vui lòng nhập thông tin")
-        isFlag &= validation.valicationCheck(screenProduce, "tbScreen", "(*)Vui lòng nhập thông tin")
-        isFlag &= validation.valicationCheck(PriceProduce, "tbPrice", "(*)Vui lòng nhập thông tin")
-        isFlag &= validation.valicationCheck(imgProduce, "tbImg", "(*)Vui lòng nhập thông tin")
-        isFlag &= validation.valicationCheck(descProduce, "tbDesc", "(*)Vui lòng nhập thông tin")
-    }
-    if (!isFlag) {
+    let isValid = true;
+
+    isValid &= validation.checkNull(NameProduce, "tbNameSP", "(*)Vui lòng nhập thông tin");
+    isValid &= validation.checkOtion("typeProduce", "tbLoaiSP", "(*)Vui lòng chọn sản phẩm");
+    isValid &= validation.checkNull(backCameraProduce, "tbBackCamera", "(*)Vui lòng nhập thông tin");
+    isValid &= validation.checkNull(frontCameraProduce, "tbfrontCamera", "(*)Vui lòng nhập thông tin");
+    isValid &= validation.checkNull(screenProduce, "tbScreen", "(*)Vui lòng nhập thông tin");
+    isValid &= validation.checkNull(PriceProduce, "tbPrice", "(*)Vui lòng nhập thông tin");
+    isValid &= validation.checkNull(imgProduce, "tbImg", "(*)Vui lòng nhập thông tin");
+    isValid &= validation.checkNull(descProduce, "tbDesc", "(*)Vui lòng nhập thông tin");
+
+    if (!isValid) {
         return null;
     }
+
     const prouduce = new Produce(
         idProduce,
         NameProduce,
@@ -80,11 +80,12 @@ getEl("btnThemSanPham").addEventListener("click", () => {
     document.getElementsByClassName("modal-title")[0].innerHTML = "Thêm sản phẩm"
     getEl("btnCapNhat").style.display = "none";
     getEl("btnThemMon").style.display = "block";
+    getEl("formProduce").reset();
 })
 
 getEl("btnThemMon").onclick = () => {
-    const produce = getValueIput(true);
-    if (produce != null) {
+    const produce = getValueIput();
+    if (produce) {
         produceService
             .callAPI(`ProductCapstone`, "POST", produce)
             .then(result => {
@@ -126,8 +127,8 @@ const btnDelete = id => {
 }
 
 getEl("btnCapNhat").addEventListener("click", () => {
-    const produce = getValueIput(true);
-    if (produce != null) {
+    const produce = getValueIput();
+    if (produce) {
         produceService
             .callAPI(`ProductCapstone/${produce.id}`, "PUT", produce)
             .then(result => {
